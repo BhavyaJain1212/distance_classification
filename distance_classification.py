@@ -11,6 +11,17 @@ import time
 
 wandb.init(project="distance_classification_project", name="face_clustering")
 
+# Initialize WandB
+wandb.login(key="0f2574d285adfd954e773df2859142149d2908e5")  # Replace with your actual API key
+wandb.init(project="distance_classification_project", entity="bhavyajain1212")
+
+# Sample dataset (Iris dataset substitute)
+data = {
+    'Feature1': np.random.rand(100),
+    'Feature2': np.random.rand(100),
+    'Label': np.random.choice([0, 1], 100)
+}
+
 # ------------- Face Detection & Annotation -------------
 # Read the main image
 img = cv2.imread("/kaggle/input/plaksha-faculty-image/Plaksha_Faculty.jpg")
@@ -155,3 +166,11 @@ time.sleep(5)
 
 # Finalize WandB Run
 run.finish()
+=======
+# Log accuracy to WandB
+wandb.log({"Model Accuracy": accuracy})
+
+print(f"Model Accuracy: {accuracy * 100:.2f}%")
+
+# Finish WandB run
+wandb.finish()
